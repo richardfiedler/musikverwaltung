@@ -37,19 +37,22 @@ public class AdminModeTest
 		//Datei neu anlegen
 //		File songFile = new File ("/home/richard/musikdatenbank/penelope.txt");
 //		songFile.createNewFile( );
-		
+		String filepathForPersistence = new String();
+		filepathForPersistence = "/home/richard/musikdatenbank/penelope.txt";
 		ArrayList<String> filepathes = new ArrayList<String>( );
 		//filepathes.add( "/home/richard/musikdatenbank/song4.mp3" );
 		filepathes.add( "/home/richard/musikdatenbank/song2.mp3" );
 		filepathes.add( "/home/richard/musikdatenbank/song.mp3" );
 		
-		AdminMode.addSong( "/home/richard/musikdatenbank/song.mp3", "/home/richard/musikdatenbank/penelope.txt", false );
+		AdminMode.addSong( "/home/richard/musikdatenbank/song4.mp3", "/home/richard/musikdatenbank/penelope.txt", false );
 		
 		for (String songPath : filepathes)
 		{
 			AdminMode.addSong( songPath, "/home/richard/musikdatenbank/penelope.txt", true );
 		}
 		//Songs reinschreiben z.B. 5
+		ArrayList<Song>  songs=AdminModeApi.generateSongList(filepathForPersistence );
+		assertEquals( 3, songs.size( ) );
 	}
 //
 //	/**
